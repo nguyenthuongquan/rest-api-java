@@ -10,33 +10,25 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class RestClient {
 
-    //1. Get Method
-    public void get(String url) throws IOException {
+    //1. Get Method without Headers
+    public CloseableHttpResponse get(String url) throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url); //http get request
-        CloseableHttpResponse closeableHttpResponse = httpClient.execute(httpGet); //hit the get URL
+        return httpClient.execute(httpGet);
+    }
 
-        //a. Status code
-        int statusCode = closeableHttpResponse.getStatusLine().getStatusCode();
-        System.out.println("Status code: " + statusCode);
-
-        //b. Json string
-        String responseString = EntityUtils.toString(closeableHttpResponse.getEntity(), "UTF-8");
-        JSONObject responseJson = new JSONObject(responseString);
-        System.out.println("\nResponse JSON from API: " + responseJson);
-        //Then you can paste the responseJson to https://jsonlint.com/ to get a good-looking format.
-
-        //c. All headers
-        Header[] headersArray = closeableHttpResponse.getAllHeaders();
-        HashMap<String, String> allHeaders = new HashMap<>();
-        for (Header header : headersArray) {
-            allHeaders.put(header.getName(), header.getValue());
+    //2. Get Method with Headers
+    public CloseableHttpResponse get(String url, HashMap<String, String> hashMap) throws IOException {
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpGet httpGet = new HttpGet(url); //http get request
+        for (Map.Entry<String, String> entry: hashMap.entrySet()) {
+            httpGet.addHeader(entry.getKey(), entry.getValue());
         }
-        System.out.println("\nHeader array: " + allHeaders);
-
+        return httpClient.execute(httpGet);
     }
 }
