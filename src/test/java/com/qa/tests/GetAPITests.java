@@ -7,10 +7,8 @@ import com.qa.utilities.TestUtil;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -23,6 +21,7 @@ public class GetAPITests extends TestBase {
     String url;
     RestClient restClient;
     CloseableHttpResponse closeableHttpResponse;
+    SoftAssert softAssert;
 
     private final ReadConfigFile readConfigFile = ConfigFactory.create(ReadConfigFile.class);
 
@@ -44,7 +43,7 @@ public class GetAPITests extends TestBase {
 
         //VP: Verify: Status code
         System.out.println("Status code: " + statusCode);
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         softAssert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
         //Single Value Assertion
@@ -69,7 +68,6 @@ public class GetAPITests extends TestBase {
         System.out.println("\navatar["+ index +"]: " + avatar);
         System.out.println("\nfirstName["+ index +"]: " + firstName);
 
-
         //c. All headers
         Header[] headersArray = closeableHttpResponse.getAllHeaders();
         HashMap<String, String> allHeaders = new HashMap<>();
@@ -77,7 +75,6 @@ public class GetAPITests extends TestBase {
             allHeaders.put(header.getName(), header.getValue());
         }
         System.out.println("\nHeader array: " + allHeaders);
-
 
         softAssert.assertAll();
     }
@@ -100,7 +97,7 @@ public class GetAPITests extends TestBase {
 
         //VP: Verify: Status code
         System.out.println("Status code: " + statusCode);
-        SoftAssert softAssert = new SoftAssert();
+        softAssert = new SoftAssert();
         softAssert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
         //Single Value Assertion
