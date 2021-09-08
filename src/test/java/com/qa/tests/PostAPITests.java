@@ -3,13 +3,12 @@ package com.qa.tests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.base.TestBase;
 import com.qa.client.RestClient;
-import com.qa.data.Users;
+import com.qa.pojo.User;
 import com.qa.utilities.ReadConfigFile;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -39,8 +38,8 @@ public class PostAPITests extends TestBase {
 
         //1. Prepare java object (user), then marshalling it to Json string object
         ObjectMapper mapper = new ObjectMapper();
-        Users users = new Users("Quan Nguyen", "QA");   //expected users object
-        mapper.writeValue(new File("src/main/java/com/qa/data/users.json"), users);
+        User users = new User("Quan Nguyen", "QA", null, null);   //expected users object
+        mapper.writeValue(new File("src/main/java/com/qa/pojo/users.json"), users);
         String usersJsonString = mapper.writeValueAsString(users); //marshalling
         System.out.println("1. Prepare Request payload in Json format is: " + usersJsonString);
 
@@ -61,7 +60,7 @@ public class PostAPITests extends TestBase {
         System.out.println("4b. The Response payload in Json object format is: " + responseJson);
 
         //5. Un-marshalling, convert the Response payload from Json string object back to java object (user):
-        Users usersResObj = mapper.readValue(responseString, Users.class);
+        User usersResObj = mapper.readValue(responseString, User.class);
         System.out.println("5. Now the User object is: " + usersResObj);
         softAssert.assertEquals(usersResObj.getName(), users.getName());
         softAssert.assertEquals(usersResObj.getJob(), users.getJob());

@@ -59,10 +59,10 @@ public class GetAPITests extends TestBase {
 
         //Get the value from JSON ARRAY at specific index
         int index = 0;
-        String lastName = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/last_name");
-        String id = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/id");
-        String avatar = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/avatar");
-        String firstName = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/first_name");
+        String lastName = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/last_name");
+        String id = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/id");
+        String avatar = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/avatar");
+        String firstName = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/first_name");
         System.out.println("\nlastName["+ index +"]: " + lastName);
         System.out.println("\nid["+ index +"]: " + id);
         System.out.println("\navatar["+ index +"]: " + avatar);
@@ -113,10 +113,10 @@ public class GetAPITests extends TestBase {
 
         //Get the value from JSON ARRAY at specific index
         int index = 0;
-        String lastName = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/last_name");
-        String id = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/id");
-        String avatar = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/avatar");
-        String firstName = TestUtil.getValueByJPath(responseJson, "/data["+ index +"]/first_name");
+        String lastName = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/last_name");
+        String id = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/id");
+        String avatar = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/avatar");
+        String firstName = TestUtil.getValueByJPath(responseJson, "/pojo["+ index +"]/first_name");
         System.out.println("\nlastName["+ index +"]: " + lastName);
         System.out.println("\nid["+ index +"]: " + id);
         System.out.println("\navatar["+ index +"]: " + avatar);

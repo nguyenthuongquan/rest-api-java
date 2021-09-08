@@ -58,6 +58,20 @@
             <version>2.12.5</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.juneau/juneau-marshall -->
+        <dependency>
+            <groupId>org.apache.juneau</groupId>
+            <artifactId>juneau-marshall</artifactId>
+            <version>8.2.0</version>
+        </dependency>
 
     </dependencies>
 
