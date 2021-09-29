@@ -10,7 +10,7 @@ import org.apache.juneau.xml.XmlSerializer;
 
 public class POJOUtil {
 
-    //SERIALIZATION
+    //SERIALIZATION  = Marshalling
     //POJO to JSON
     public static String getJsonFromPOJO(Object object) throws SerializeException {
         JsonSerializer jsonSerializer = JsonSerializer.DEFAULT_READABLE;
@@ -29,7 +29,7 @@ public class POJOUtil {
         return htmlSerializer.serialize(object);
     }
 
-    //DE-SERIALIZATION
+    //DE-SERIALIZATION = UnMarshalling
     //JSON to POJO
     public static Product getPOJOFromJson(String json) throws ParseException {
         JsonParser jsonParser = JsonParser.DEFAULT;
